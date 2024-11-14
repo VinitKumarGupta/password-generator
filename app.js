@@ -10,9 +10,9 @@ generateButton.onclick = function generatePassword() {
     const pwdLength = 8;
     let password = "";
 
-    for(let i = 0; i < pwdLength; i++) {
+    for (let i = 0; i < pwdLength; i++) {
         let generatePwd = Math.floor(Math.random() * character.length);
-        password += character.substring(generatePwd, generatePwd+1);
+        password += character.substring(generatePwd, generatePwd + 1);
     }
 
     passwordInput.value = password;
@@ -20,13 +20,17 @@ generateButton.onclick = function generatePassword() {
 
 copyButton.onclick = function copyPwd() {
     const passwordValue = passwordInput.value;
+    let validPassword =
+        passwordValue.trim().length < 8 || passwordValue.trim.length > 8;
 
-    if(passwordValue.trim() === "") {
-        alert("Password is empty!\nGenerate a password first.")
+    if (passwordValue.trim() === "") {
+        alert("Password is empty!\nGenerate a password first.");
+    } else if (validPassword) {
+        alert("Password length should only be 8! Please try again.");
     } else {
-        navigator.clipboard.writeText(passwordValue).then(function() {
+        navigator.clipboard.writeText(passwordValue).then(function () {
             show.innerHTML = "Your new password is:<br> " + passwordValue;
-            
+
             show.classList.add("active");
             setTimeout(() => {
                 show.classList.remove("active");

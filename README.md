@@ -22,6 +22,15 @@ By default, the password length is set to 8 characters. To change the length:
    const pwdLength = 12;
    ```
 
+## Password Validation Criteria
+The password validation in this project has been updated with the following rule:
+
+```javascript
+let validPassword = passwordValue.trim().length < 8 || passwordValue.trim().length > 8;
+```
+
+This condition ensures that only passwords exactly 8 characters long are considered valid. Due to this rule, passwords shorter or longer than 8 characters cannot be copied or used. If you prefer a different length requirement, you can adjust the < 8 and > 8 conditions in the code.
+
 ## Modifying Character Set
 
 The character set used for password generation includes letters, numbers, and special characters. To add or remove characters:
